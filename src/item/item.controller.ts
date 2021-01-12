@@ -13,4 +13,9 @@ export class ItemController {
     async getItemById(id: number): Promise<ItemEntity> {
         return this.itemService.getItemById(id);
     }
+
+    @MessagePattern({ role: 'item', cmd: 'delete-by-id' })
+    async deleteItemById(id: number): Promise<ItemEntity> {
+        return this.itemService.deleteItemById(id);
+    }
 }
