@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:${POSTGRES_VERSION}
+    environment: 
+      - POSTGRES_USER=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DATABASE}
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - /data/postgres/
+    networks:
+      - microservice-network
+
+networks: 
+  microservice-network:
+    driver: bridge
