@@ -1,75 +1,121 @@
+<br />
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+  <a href="https://github.com/otasoft/otasoft-auth">
+    <img src="doc/microservice-template-logo.png" alt="Otasoft Logo" width="128" height="128">
+  </a>
+
+  <h1 align="center">Otasoft Microservice Template - Basic template for creating new microservices</h1>
+
+  <p align="center">
+    <!-- <a href="https://github.com/otasoft/otasoft-auth"><strong>Explore the docs »</strong></a> -->
+    <!-- <a href="https://github.com/otasoft/otasoft-auth">View Demo</a> -->
+    <!-- · -->
+    <a href="https://github.com/otasoft/otasoft-auth/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/otasoft/otasoft-auth/issues">Request Feature</a>
+  </p>
+  <p align="center">
+    <!-- <a href="https://github.com/otasoft/otasoft-api/actions"><img src="https://github.com/otasoft/otasoft-api/workflows/Node.js%20CI/badge.svg?branch=master" alt="CI"></a> -->
 </p>
 
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# About The Project
 
-## Description
+Otasoft Microservice template - Basic template for creating new microservices
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+* PostgreSQL
+* CQRS
+* Healthchecks
+* .env support
+* Typeorm
+* Utils (exceptions, microservice connection, mocks, ...)
+* Dockerfile and docker-compose
+* doc directory
+* Github workflows and issue templates
 
-## Installation
+Otasoft projects are and always will be open source (MIT Licence). Anyone can use and support the project. The project is currently in the development phase.
 
-```bash
-$ npm install
+## Table of Contents
+
+* [Getting Started](#getting-started)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [How to support](#how-to-support)
+* [Contact](#contact)
+* [License](#license)
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To start developing the project please check if you have these tools installed on your machine:
+
+* [Node.js](https://nodejs.org/en/download/)
+* [Yarn](https://yarnpkg.com/getting-started/install)
+* [Docker](https://www.docker.com/get-started)
+
+Installation
+
+1. Clone the repo
+
+```sh
+git clone https://github.com/otasoft/microservice-template
 ```
 
-## Running the app
+2. Move into microservice-template
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```sh
+cd microservice-template
 ```
 
-## Test
+3. Install project dependencies
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```sh
+yarn
 ```
 
-## Support
+4. Copy .env.example file as .env and fill it with your environment variables
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```sh
+cp .env.example .env
+```
 
-## Stay in touch
+5. Run docker-compose to start development environment
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```sh
+docker-compose up
+```
 
+6. Run project
+
+```sh
+yarn start:dev
+```
+
+<!-- ROADMAP -->
+## Roadmap
+
+See the [open issues](https://github.com/otasoft/otasoft-auth/issues) for a list of proposed features (and known issues).
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+You are welcome to contribute to Otasoft projects. Please see [contribution tips](CONTRIBUTING.md)
+
+<!-- SUPPORT -->
+## How to support
+
+Otasoft projects are and always will be Open Source.
+
+Core team and contributors in the Otasoft ecosystem spend their free and off work time to make this project grow. If you would like to support us you can do so by:
+
+* contributing - it does not matter whether it is writing code, creating designs, or sharing knowledge in our e-books and pdfs. Any help is always welcome!
+* evangelizing - share a good news about Otasoft projects in social media or during technology conferences ;)
+
+<!-- CONTACT -->
+## Contact
+
+Founder -> [Jakub Andrzejewski](https://www.linkedin.com/in/jakub-andrzejewski/)
+
+<!-- LICENSE -->
 ## License
 
-  Nest is [MIT licensed](LICENSE).
+Distributed under the [MIT licensed](LICENSE). See `LICENSE` for more information.
