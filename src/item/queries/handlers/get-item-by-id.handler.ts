@@ -6,10 +6,8 @@ import { ItemRepository } from '../../../db/repositories';
 import { GetItemByIdQuery } from '../impl';
 import { ItemEntity } from 'src/db/entities';
 
-
 @QueryHandler(GetItemByIdQuery)
-export class GetItemByIdHandler
-  implements IQueryHandler<GetItemByIdQuery> {
+export class GetItemByIdHandler implements IQueryHandler<GetItemByIdQuery> {
   constructor(
     @InjectRepository(ItemRepository)
     private readonly itemRepository: ItemRepository,
@@ -19,7 +17,7 @@ export class GetItemByIdHandler
   async execute(query: GetItemByIdQuery): Promise<ItemEntity> {
     const item = await this.itemRepository.findOne(query.id);
 
-    if (!item) this.rpcExceptionService.throwNotFound('Item not found')
+    if (!item) this.rpcExceptionService.throwNotFound('Item not found');
 
     return item;
   }

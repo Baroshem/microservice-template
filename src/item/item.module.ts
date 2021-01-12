@@ -12,11 +12,6 @@ import { QueryHandlers } from './queries/handlers';
 @Module({
   imports: [TypeOrmModule.forFeature([ItemRepository]), CqrsModule],
   controllers: [ItemController],
-  providers: [
-    ItemService,
-    ...QueryHandlers,
-    ...CommandHandlers,
-    ConfigService
-  ]
+  providers: [ItemService, ...QueryHandlers, ...CommandHandlers, ConfigService],
 })
 export class ItemModule {}

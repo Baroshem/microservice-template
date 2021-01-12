@@ -7,10 +7,7 @@ import { RpcExceptionService } from './exception-handling';
 @Global()
 @Module({
   imports: [ConfigModule],
-  providers: [
-    RpcExceptionService,
-    ErrorValidationService,
-  ],
+  providers: [RpcExceptionService, ErrorValidationService],
   exports: [RpcExceptionService, ErrorValidationService],
 })
 export class UtilsModule {}

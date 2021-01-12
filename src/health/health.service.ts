@@ -12,7 +12,10 @@ export class HealthService {
   @Cron(CronExpression.EVERY_30_MINUTES)
   checkMicroserviceTypeorm() {
     return this.healthCheckService.check([
-      () => this.typeOrmHealthIndicator.pingCheck('microservice', { timeout: 1000 }),
+      () =>
+        this.typeOrmHealthIndicator.pingCheck('microservice', {
+          timeout: 1000,
+        }),
     ]);
   }
 }

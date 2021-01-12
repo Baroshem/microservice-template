@@ -18,10 +18,13 @@ export class DeleteItemByIdHandler
   async execute(command: DeleteItemByIdCommand): Promise<ItemEntity> {
     const item = await this.itemRepository.findOne(command.id);
 
-    if (!item) this.rpcExceptionService.throwNotFound('Cannot delete item because the item was not found');
+    if (!item)
+      this.rpcExceptionService.throwNotFound(
+        'Cannot delete item because the item was not found',
+      );
 
     try {
-      await this.itemRepository.delete(item)
+      await this.itemRepository.delete(item);
 
       return item;
     } catch (error) {

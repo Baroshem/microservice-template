@@ -5,17 +5,15 @@ import { ItemService } from './item.service';
 
 @Controller('item')
 export class ItemController {
-    constructor(
-        private readonly itemService: ItemService,
-    ) {}
+  constructor(private readonly itemService: ItemService) {}
 
-    @MessagePattern({ role: 'item', cmd: 'get-by-id' })
-    async getItemById(id: number): Promise<ItemEntity> {
-        return this.itemService.getItemById(id);
-    }
+  @MessagePattern({ role: 'item', cmd: 'get-by-id' })
+  async getItemById(id: number): Promise<ItemEntity> {
+    return this.itemService.getItemById(id);
+  }
 
-    @MessagePattern({ role: 'item', cmd: 'delete-by-id' })
-    async deleteItemById(id: number): Promise<ItemEntity> {
-        return this.itemService.deleteItemById(id);
-    }
+  @MessagePattern({ role: 'item', cmd: 'delete-by-id' })
+  async deleteItemById(id: number): Promise<ItemEntity> {
+    return this.itemService.deleteItemById(id);
+  }
 }
