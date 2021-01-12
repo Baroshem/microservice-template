@@ -3,11 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { TerminusModule } from '@nestjs/terminus';
 import { ScheduleModule } from '@nestjs/schedule';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { DbModule } from './db/db.module';
 import { HealthModule } from './health/health.module';
 import { UtilsModule } from './utils/utils.module';
+import { ItemModule } from './item/item.module';
 
 @Module({
   imports: [
@@ -17,8 +16,7 @@ import { UtilsModule } from './utils/utils.module';
     DbModule,
     UtilsModule,
     HealthModule,
+    ItemModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
