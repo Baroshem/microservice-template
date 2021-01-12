@@ -2,8 +2,8 @@ import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
-import { UserEntity } from './entities';
-import { LogRepository } from './repositories';
+import { ItemEntity } from './entities';
+
 
 @Global()
 @Module({
@@ -19,10 +19,9 @@ import { LogRepository } from './repositories';
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DATABASE'),
         synchronize: true,
-        entities: [UserEntity, LogEntity],
+        entities: [ItemEntity],
       }),
     }),
-    TypeOrmModule.forFeature([LogRepository]),
   ],
 })
 export class DbModule {}
