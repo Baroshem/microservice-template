@@ -2,7 +2,7 @@ import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 
 import { ItemEntity } from '../entity';
-import { ItemService } from '../item.service';
+import { ItemService } from '../services';
 
 @Controller('item')
 export class ItemController {

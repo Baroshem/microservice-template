@@ -2,7 +2,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { ItemController } from './item.controller';
-import { ItemService } from '../item.service';
+import { ItemService } from '../services';
 
 describe('ItemController', () => {
   let controller: ItemController;
