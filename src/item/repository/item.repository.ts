@@ -5,11 +5,11 @@ import { Item } from '../models';
 
 @EntityRepository(ItemEntity)
 export class ItemRepository extends Repository<ItemEntity> {
-    async deleteItem(id: number) {
-        const item = new Item(id);
+  async deleteItem(id: number) {
+    const item = new Item(id);
 
-        item.deleteItem(id)
+    item.deleteItem(id);
 
-        return item;
-    }
+    return item;
+  }
 }

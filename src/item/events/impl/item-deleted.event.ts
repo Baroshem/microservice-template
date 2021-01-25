@@ -1,3 +1,3 @@
 export class ItemDeletedEvent {
-    constructor(public readonly itemId: number) {}
+  constructor(public readonly itemId: number) {}
 }

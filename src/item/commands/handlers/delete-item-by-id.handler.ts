@@ -18,7 +18,7 @@ export class DeleteItemByIdHandler
 
   async execute(command: DeleteItemByIdCommand): Promise<ItemEntity> {
     const item = await this.itemRepository.findOne(command.id);
-    
+
     if (!item)
       this.rpcExceptionService.throwNotFound(
         'Cannot delete item because the item was not found',
@@ -28,10 +28,10 @@ export class DeleteItemByIdHandler
       await this.itemRepository.delete(item);
 
       const itemModel = this.publisher.mergeObjectContext(
-        await this.itemRepository.deleteItem(command.id)
-      )
-      itemModel.deleteItem(command.id)
-      itemModel.commit()
+        await this.itemRepository.deleteItem(command.id),
+      );
+      itemModel.deleteItem(command.id);
+      itemModel.commit();
 
       return item;
     } catch (error) {
