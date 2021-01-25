@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ItemRepository } from './repository';
 import { CommandHandlers } from './commands/handlers';
-import { ItemController } from './item.controller';
+import { ItemController } from './controllers';
 import { ItemService } from './item.service';
 import { QueryHandlers } from './queries/handlers';
 import { EventHandlers } from './events/handlers';
