@@ -1,6 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
-import { ItemEntity } from 'src/db/entities';
+
+import { ItemEntity } from './entity';
 import { ItemService } from './item.service';
 
 @Controller('item')

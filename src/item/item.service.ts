@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { ItemEntity } from 'src/db/entities';
+
+import { ItemEntity } from './entity';
 import { DeleteItemByIdCommand } from './commands/impl';
 import { GetItemByIdQuery } from './queries/impl';
 

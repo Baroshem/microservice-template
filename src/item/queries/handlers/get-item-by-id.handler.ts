@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { RpcExceptionService } from '../../../utils/exception-handling';
 import { ItemRepository } from '../../repository';
 import { GetItemByIdQuery } from '../impl';
-import { ItemEntity } from 'src/db/entities';
+import { ItemEntity } from '../../entity';
 
 @QueryHandler(GetItemByIdQuery)
 export class GetItemByIdHandler implements IQueryHandler<GetItemByIdQuery> {

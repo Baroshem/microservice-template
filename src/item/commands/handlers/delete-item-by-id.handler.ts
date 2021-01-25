@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteItemByIdCommand } from '../impl';
 import { ItemRepository } from '../../repository';
 import { RpcExceptionService } from '../../../utils/exception-handling';
-import { ItemEntity } from 'src/db/entities';
+import { ItemEntity } from '../../entity';
 
 @CommandHandler(DeleteItemByIdCommand)
 export class DeleteItemByIdHandler
