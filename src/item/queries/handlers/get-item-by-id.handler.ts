@@ -2,7 +2,7 @@ import { QueryHandler, IQueryHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { RpcExceptionService } from '../../../utils/exception-handling';
-import { ItemRepository } from '../../../db/repositories';
+import { ItemRepository } from '../../repository';
 import { GetItemByIdQuery } from '../impl';
 import { ItemEntity } from 'src/db/entities';
 

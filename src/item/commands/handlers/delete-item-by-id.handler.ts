@@ -2,7 +2,7 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { DeleteItemByIdCommand } from '../impl';
-import { ItemRepository } from '../../../db/repositories';
+import { ItemRepository } from '../../repository';
 import { RpcExceptionService } from '../../../utils/exception-handling';
 import { ItemEntity } from 'src/db/entities';
 
