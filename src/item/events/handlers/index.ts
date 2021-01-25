@@ -1,1 +1,3 @@
-export * from './item-deleted.handler';
+import { ItemDeletedHandler } from './item-deleted.handler';
+
+export const EventHandlers = [ItemDeletedHandler];

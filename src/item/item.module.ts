@@ -8,10 +8,17 @@ import { CommandHandlers } from './commands/handlers';
 import { ItemController } from './item.controller';
 import { ItemService } from './item.service';
 import { QueryHandlers } from './queries/handlers';
+import { EventHandlers } from './events/handlers';
 
 @Module({
   imports: [TypeOrmModule.forFeature([ItemRepository]), CqrsModule],
   controllers: [ItemController],
-  providers: [ItemService, ...QueryHandlers, ...CommandHandlers, ConfigService],
+  providers: [
+    ItemService,
+    ...QueryHandlers,
+    ...CommandHandlers,
+    ...EventHandlers,
+    ConfigService,
+  ],
 })
 export class ItemModule {}
