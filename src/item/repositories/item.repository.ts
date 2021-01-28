@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { CreateItemDto } from '../dtos';
+import { CreateItemDto, UpdateItemDto } from '../dtos';
 import { Item } from '../models';
 
 @Injectable()
@@ -17,6 +17,14 @@ export class ItemRepository {
     const item = new Item();
 
     item.createItem(createItemDto);
+
+    return item;
+  }
+
+  updateItem(updateItemDto: UpdateItemDto): Item {
+    const item = new Item();
+
+    item.updateItem(updateItemDto);
 
     return item;
   }
