@@ -2,9 +2,9 @@ import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { DeleteItemByIdCommand } from '../impl';
-import { RpcExceptionService } from '../../../utils/exception-handling';
-import { ItemEntity } from '../../entity';
-import { ItemWriteRepository, ItemRepository } from '../../repository';
+import { RpcExceptionService, ErrorValidationService } from '../../../utils';
+import { ItemEntity } from '../../entities';
+import { ItemWriteRepository, ItemRepository } from '../../repositories';
 
 @CommandHandler(DeleteItemByIdCommand)
 export class DeleteItemByIdHandler
@@ -15,6 +15,7 @@ export class DeleteItemByIdHandler
     private readonly itemRepository: ItemRepository,
     private readonly publisher: EventPublisher,
     private readonly rpcExceptionService: RpcExceptionService,
+    private readonly errorValidationService: ErrorValidationService,
   ) {}
 
   async execute(command: DeleteItemByIdCommand): Promise<ItemEntity> {
@@ -35,7 +36,9 @@ export class DeleteItemByIdHandler
 
       return item;
     } catch (error) {
-      this.rpcExceptionService.throwCatchedException(error);
+      const errorObject = this.errorValidationService.validateDbError(error.code);
+
+      this.rpcExceptionService.throwCatchedException(errorObject);
     }
   }
 }
