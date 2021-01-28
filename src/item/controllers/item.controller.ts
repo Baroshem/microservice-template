@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 
-import { CreateItemDto, UpdateItemDto } from '../dtos';
+import { CreateItemDto, GetItemsDto, UpdateItemDto } from '../dtos';
 import { ItemEntity } from '../entities';
 import { ItemService } from '../services';
 
@@ -12,6 +12,11 @@ export class ItemController {
   @MessagePattern({ role: 'item', cmd: 'get-by-id' })
   async getItemById(id: number): Promise<ItemEntity> {
     return this.itemService.getItemById(id);
+  }
+
+  @MessagePattern({ role: 'item', cmd: 'get-many' })
+  async getItems(getItemsDto: GetItemsDto): Promise<ItemEntity[]> {
+    return this.itemService.getItems(getItemsDto);
   }
 
   @MessagePattern({ role: 'item', cmd: 'create' })

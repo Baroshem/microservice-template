@@ -7,8 +7,8 @@ import {
   DeleteItemByIdCommand,
   UpdateItemCommand,
 } from '../commands/impl';
-import { GetItemByIdQuery } from '../queries/impl';
-import { CreateItemDto, UpdateItemDto } from '../dtos';
+import { GetItemByIdQuery, GetItemsQuery } from '../queries/impl';
+import { CreateItemDto, GetItemsDto, UpdateItemDto } from '../dtos';
 
 @Injectable()
 export class ItemService {
@@ -19,6 +19,10 @@ export class ItemService {
 
   async getItemById(id: number): Promise<ItemEntity> {
     return this.queryBus.execute(new GetItemByIdQuery(id));
+  }
+
+  async getItems(getItemsDto: GetItemsDto): Promise<ItemEntity[]> {
+    return this.queryBus.execute(new GetItemsQuery(getItemsDto));
   }
 
   async createItem(createItemDto: CreateItemDto): Promise<ItemEntity> {
