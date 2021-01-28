@@ -2,22 +2,23 @@ import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { DeleteItemByIdCommand } from '../impl';
-import { ItemRepository } from '../../repository';
 import { RpcExceptionService } from '../../../utils/exception-handling';
 import { ItemEntity } from '../../entity';
+import { ItemWriteRepository, ItemRepository } from '../../repository';
 
 @CommandHandler(DeleteItemByIdCommand)
 export class DeleteItemByIdHandler
   implements ICommandHandler<DeleteItemByIdCommand> {
   constructor(
-    @InjectRepository(ItemRepository)
+    @InjectRepository(ItemWriteRepository)
+    private readonly itemWriteRepository: ItemWriteRepository,
     private readonly itemRepository: ItemRepository,
     private readonly publisher: EventPublisher,
     private readonly rpcExceptionService: RpcExceptionService,
   ) {}
 
   async execute(command: DeleteItemByIdCommand): Promise<ItemEntity> {
-    const item = await this.itemRepository.findOne(command.id);
+    const item = await this.itemWriteRepository.findOne(command.id);
 
     if (!item)
       this.rpcExceptionService.throwNotFound(
@@ -25,7 +26,7 @@ export class DeleteItemByIdHandler
       );
 
     try {
-      await this.itemRepository.delete(item);
+      await this.itemWriteRepository.delete(item);
 
       const itemModel = this.publisher.mergeObjectContext(
         await this.itemRepository.deleteItem(command.id),
