@@ -1,6 +1,6 @@
 import { AggregateRoot } from '@nestjs/cqrs';
-import { CreateItemDto } from '../dtos';
 
+import { CreateItemDto } from '../dtos';
 import { ItemCreatedEvent, ItemDeletedEvent } from '../events/impl';
 
 export class Item extends AggregateRoot {

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateItemDto } from '../dtos';
 
+import { CreateItemDto } from '../dtos';
 import { Item } from '../models';
 
 @Injectable()

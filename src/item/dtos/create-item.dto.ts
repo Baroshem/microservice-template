@@ -1,3 +1,3 @@
 export class CreateItemDto {
-    name: string;
+  name: string;
 }

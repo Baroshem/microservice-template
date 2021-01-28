@@ -36,7 +36,9 @@ export class DeleteItemByIdHandler
 
       return item;
     } catch (error) {
-      const errorObject = this.errorValidationService.validateDbError(error.code);
+      const errorObject = this.errorValidationService.validateDbError(
+        error.code,
+      );
 
       this.rpcExceptionService.throwCatchedException(errorObject);
     }
