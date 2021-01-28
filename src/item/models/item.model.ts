@@ -7,7 +7,7 @@ export class Item extends AggregateRoot {
     super();
   }
 
-  deleteItem(itemId: number) {
-    this.apply(new ItemDeletedEvent(itemId));
+  deleteItem() {
+    this.apply(new ItemDeletedEvent(this.id));
   }
 }
