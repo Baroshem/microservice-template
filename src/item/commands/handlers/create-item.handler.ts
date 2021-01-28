@@ -1,14 +1,13 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { DeleteItemByIdCommand } from '../impl';
-import { RpcExceptionService, ErrorValidationService } from '../../../utils';
+import { ErrorValidationService, RpcExceptionService } from '../../../utils';
 import { ItemEntity } from '../../entities';
-import { ItemWriteRepository, ItemRepository } from '../../repositories';
+import { ItemRepository, ItemWriteRepository } from '../../repositories';
+import { CreateItemCommand } from '../impl';
 
-@CommandHandler(DeleteItemByIdCommand)
-export class DeleteItemByIdHandler
-  implements ICommandHandler<DeleteItemByIdCommand> {
+@CommandHandler(CreateItemCommand)
+export class CreateItemHandler implements ICommandHandler<CreateItemCommand> {
   constructor(
     @InjectRepository(ItemWriteRepository)
     private readonly itemWriteRepository: ItemWriteRepository,
@@ -18,20 +17,20 @@ export class DeleteItemByIdHandler
     private readonly errorValidationService: ErrorValidationService,
   ) {}
 
-  async execute(command: DeleteItemByIdCommand): Promise<ItemEntity> {
-    const item = await this.itemWriteRepository.findOne(command.id);
+  async execute(command: CreateItemCommand): Promise<ItemEntity> {
+    const { createItemDto } = command;
 
-    if (!item)
-      this.rpcExceptionService.throwNotFound(
-        'Cannot delete item because the item was not found',
-      );
+    const item = this.itemWriteRepository.create();
+
+    item.name = createItemDto.name;
 
     try {
-      await this.itemWriteRepository.delete(item);
+      await item.save();
 
       const itemModel = this.publisher.mergeObjectContext(
-        await this.itemRepository.deleteItem(command.id),
+        await this.itemRepository.createItem(createItemDto),
       );
+
       itemModel.commit();
 
       return item;

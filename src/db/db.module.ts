@@ -2,7 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
-import { ItemEntity } from '../item/entity';
+import { ItemEntity } from '../item/entities';
 
 @Global()
 @Module({

@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { ItemRepository } from './repository';
+import { ItemRepository } from './repositories';
 import { CommandHandlers } from './commands/handlers';
 import { QueryHandlers } from './queries/handlers';
 import { EventHandlers } from './events/handlers';
