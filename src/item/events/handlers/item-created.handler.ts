@@ -6,7 +6,7 @@ import { ItemCreatedEvent } from '../impl';
 export class ItemCreatedHandler implements IEventHandler<ItemCreatedEvent> {
   handle(event: ItemCreatedEvent) {
     console.log(
-      `Handled ItemDeletedEvent with ID: ${event.createItemDto.name}`,
+      `Handled ItemCreatedEvent with name: ${event.createItemDto.name}`,
     );
   }
 }
