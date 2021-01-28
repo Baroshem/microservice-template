@@ -1,4 +1,4 @@
 export class GetItemsDto {
-    limit: number;
-    order?: string;
+  limit: number;
+  order?: string;
 }
