@@ -1,14 +1,13 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
 
-import { ItemEntity } from '../entity';
 import { Item } from '../models';
 
-@EntityRepository(ItemEntity)
-export class ItemRepository extends Repository<ItemEntity> {
-  async deleteItem(id: number) {
+@Injectable()
+export class ItemRepository {
+  deleteItem(id: number) {
     const item = new Item(id);
 
-    item.deleteItem(id);
+    item.deleteItem();
 
     return item;
   }
