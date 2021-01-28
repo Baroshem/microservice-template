@@ -2,20 +2,20 @@ import { QueryHandler, IQueryHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { RpcExceptionService } from '../../../utils/exception-handling';
-import { ItemRepository } from '../../repository';
+import { ItemReadRepository } from '../../repository';
 import { GetItemByIdQuery } from '../impl';
 import { ItemEntity } from '../../entity';
 
 @QueryHandler(GetItemByIdQuery)
 export class GetItemByIdHandler implements IQueryHandler<GetItemByIdQuery> {
   constructor(
-    @InjectRepository(ItemRepository)
-    private readonly itemRepository: ItemRepository,
+    @InjectRepository(ItemReadRepository)
+    private readonly itemReadRepository: ItemReadRepository,
     private readonly rpcExceptionService: RpcExceptionService,
   ) {}
 
   async execute(query: GetItemByIdQuery): Promise<ItemEntity> {
-    const item = await this.itemRepository.findOne(query.id);
+    const item = await this.itemReadRepository.findOne(query.id);
 
     if (!item) this.rpcExceptionService.throwNotFound('Item not found');
 
