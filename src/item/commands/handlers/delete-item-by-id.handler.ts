@@ -31,7 +31,6 @@ export class DeleteItemByIdHandler
       const itemModel = this.publisher.mergeObjectContext(
         await this.itemRepository.deleteItem(command.id),
       );
-      itemModel.deleteItem(command.id);
       itemModel.commit();
 
       return item;
