@@ -2,8 +2,6 @@ import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
-import { ItemEntity } from '../item/entities';
-
 @Global()
 @Module({
   imports: [
@@ -18,7 +16,6 @@ import { ItemEntity } from '../item/entities';
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DATABASE'),
         synchronize: true,
-        entities: [ItemEntity],
       }),
     }),
   ],

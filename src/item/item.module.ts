@@ -10,9 +10,10 @@ import { EventHandlers } from './events/handlers';
 import { ItemController } from './controllers';
 import { ItemService } from './services';
 import { ItemSagas } from './sagas';
+import { ItemEntity } from './entities';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ItemRepository]), CqrsModule],
+  imports: [TypeOrmModule.forFeature([ItemRepository, ItemEntity]), CqrsModule],
   controllers: [ItemController],
   providers: [
     ConfigService,
