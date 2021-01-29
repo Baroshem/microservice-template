@@ -1,1 +1,1 @@
-export * from './typeormAsyncConfig';
+export * from './typeOrmAsyncConfig';
