@@ -3,7 +3,11 @@ import { ofType, Saga } from '@nestjs/cqrs';
 import { Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
-import { ItemCreatedEvent, ItemUpdatedEvent } from '../events/impl';
+import {
+  ItemCreatedEvent,
+  ItemUpdatedEvent,
+  ItemDeletedEvent,
+} from '../events/impl';
 
 @Injectable()
 export class ItemSagas {
@@ -25,6 +29,17 @@ export class ItemSagas {
       delay(1000),
       map((event) => {
         console.log(`Inside itemUpdated @Saga: ${event}`);
+      })
+    );
+  };
+
+  @Saga()
+  itemDeleted = (events$: Observable<any>) => {
+    return (
+      events$.pipe(ofType(ItemDeletedEvent)),
+      delay(1000),
+      map((event) => {
+        console.log(`Inside itemDeleted @Saga: ${event}`);
       })
     );
   };
