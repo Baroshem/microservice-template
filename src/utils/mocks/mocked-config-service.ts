@@ -20,7 +20,7 @@ export const mockedConfigService = {
       case 'RABBITMQ_NODENAME':
         return 'localhost';
       case 'RABBITMQ_FIRST_HOST_PORT':
-        return 5673
+        return 5673;
     }
   },
 };

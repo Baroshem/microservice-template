@@ -3,7 +3,11 @@ import { ConfigService } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { ItemRepository } from './repositories';
+import {
+  ItemReadRepository,
+  ItemWriteRepository,
+  ItemRepository,
+} from './repositories';
 import { CommandHandlers } from './commands/handlers';
 import { QueryHandlers } from './queries/handlers';
 import { EventHandlers } from './events/handlers';
@@ -13,7 +17,14 @@ import { ItemSagas } from './sagas';
 import { ItemEntity } from './entities';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ItemRepository, ItemEntity]), CqrsModule],
+  imports: [
+    TypeOrmModule.forFeature([
+      ItemReadRepository,
+      ItemWriteRepository,
+      ItemEntity,
+    ]),
+    CqrsModule,
+  ],
   controllers: [ItemController],
   providers: [
     ConfigService,
@@ -22,6 +33,7 @@ import { ItemEntity } from './entities';
     ...EventHandlers,
     ItemService,
     ItemSagas,
+    ItemRepository,
   ],
 })
 export class ItemModule {}
