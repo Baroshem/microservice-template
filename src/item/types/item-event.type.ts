@@ -1,3 +1,10 @@
-import { ItemCreatedEvent, ItemDeletedEvent, ItemUpdatedEvent } from "../events/impl";
+import {
+  ItemCreatedEvent,
+  ItemDeletedEvent,
+  ItemUpdatedEvent,
+} from '../events/impl';
 
-export type ItemEventType = ItemCreatedEvent | ItemUpdatedEvent | ItemDeletedEvent
+export type ItemEventType =
+  | ItemCreatedEvent
+  | ItemUpdatedEvent
+  | ItemDeletedEvent;

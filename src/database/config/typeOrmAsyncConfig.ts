@@ -14,6 +14,6 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
     password: configService.get('POSTGRES_PASSWORD'),
     database: configService.get('POSTGRES_DATABASE'),
     synchronize: true,
-    entities: [ItemEntity]
+    entities: [ItemEntity],
   }),
 };
