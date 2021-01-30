@@ -4,8 +4,10 @@ import { CreateItemDto, UpdateItemDto } from '../dtos';
 import {
   ItemCreatedEvent,
   ItemDeletedEvent,
+  ItemOwnerNotifiedEvent,
   ItemUpdatedEvent,
 } from '../events/impl';
+import { ItemEventType } from '../types';
 
 export class Item extends AggregateRoot {
   constructor(private readonly id?: number) {
@@ -22,5 +24,9 @@ export class Item extends AggregateRoot {
 
   updateItem(updateItemDto: UpdateItemDto) {
     this.apply(new ItemUpdatedEvent(updateItemDto));
+  }
+
+  notifyItemOwner(event: ItemEventType) {
+    this.apply(new ItemOwnerNotifiedEvent(event));
   }
 }
