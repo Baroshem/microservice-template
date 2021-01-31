@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TerminusModule } from '@nestjs/terminus';
 
-import { HealthService } from './health.service';
+import { HealthService } from './services';
 
 @Module({
   imports: [TerminusModule, ScheduleModule.forRoot()],
