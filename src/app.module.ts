@@ -7,6 +7,7 @@ import { DatabaseModule } from './database/database.module';
 import { HealthModule } from './health/health.module';
 import { UtilsModule } from './utils/utils.module';
 import { ItemModule } from './item/item.module';
+import { EventStoreWrapperModule } from './event-store/event-store-wrapper.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ItemModule } from './item/item.module';
     TerminusModule,
     ScheduleModule.forRoot(),
     DatabaseModule,
+    EventStoreWrapperModule,
     UtilsModule,
     HealthModule,
     ItemModule,

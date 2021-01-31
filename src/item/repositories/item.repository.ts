@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { CreateItemDto, UpdateItemDto } from '../dtos';
 import { Item } from '../models';
+import { ItemEventType } from '../types';
 
 @Injectable()
 export class ItemRepository {
@@ -25,6 +26,14 @@ export class ItemRepository {
     const item = new Item();
 
     item.updateItem(updateItemDto);
+
+    return item;
+  }
+
+  notifyItemOwner(event: ItemEventType): Item {
+    const item = new Item();
+
+    item.notifyItemOwner(event);
 
     return item;
   }
