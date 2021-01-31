@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
 
-import { ItemController } from './controllers';
 import { ItemService } from './services';
 import { ApplicationModule } from './application/application.module';
 import { DomainModule } from './domain/domain.module';
@@ -15,7 +14,6 @@ import { InfrastructureModule } from './infrastructure/infrastructure.module';
     DomainModule,
     InfrastructureModule,
   ],
-  controllers: [ItemController],
   providers: [
     ConfigService,
     ItemService,

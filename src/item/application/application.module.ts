@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ItemReadRepository, ItemWriteRepository } from '../infrastructure/repositories';
 import { CommandHandlers } from './commands/handlers';
+import { ItemController } from './controllers';
 import { QueryHandlers } from './queries/handlers';
 
 @Module({
@@ -11,6 +12,7 @@ import { QueryHandlers } from './queries/handlers';
         TypeOrmModule.forFeature([ItemReadRepository, ItemWriteRepository]),
         CqrsModule,
     ],
+    controllers: [ItemController],
     providers: [
         ...CommandHandlers,
         ...QueryHandlers,
