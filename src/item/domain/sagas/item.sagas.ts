@@ -3,12 +3,12 @@ import { ICommand, ofType, Saga } from '@nestjs/cqrs';
 import { Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
-import { NotifyItemOwnerCommand } from '../application/commands/impl';
+import { NotifyItemOwnerCommand } from '../../application/commands/impl';
 import {
   ItemCreatedEvent,
   ItemUpdatedEvent,
   ItemDeletedEvent,
-} from '../domain/events/impl';
+} from '../events/impl';
 
 @Injectable()
 export class ItemSagas {

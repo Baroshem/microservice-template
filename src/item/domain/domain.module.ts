@@ -4,6 +4,7 @@ import { EventStoreModule, EventStoreSubscriptionType } from '@juicycleff/nestjs
 import { ItemCreatedEvent, ItemDeletedEvent, ItemOwnerNotifiedEvent, ItemUpdatedEvent } from './events/impl';
 import { ItemRepository } from './repositories';
 import { EventHandlers } from './events/handlers';
+import { ItemSagas } from './sagas';
 
 @Global()
 @Module({
@@ -27,6 +28,7 @@ import { EventHandlers } from './events/handlers';
     ],
     providers: [
         ItemRepository,
+        ItemSagas,
         ...EventHandlers,
     ],
     exports: [
