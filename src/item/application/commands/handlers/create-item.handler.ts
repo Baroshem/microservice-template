@@ -3,7 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { ErrorValidationService, RpcExceptionService } from '../../../../utils';
 import { ItemEntity } from '../../../entities';
-import { ItemRepository, ItemWriteRepository } from '../../../repositories';
+import { ItemRepository } from '../../../repositories';
+import { ItemWriteRepository } from '../../../infrastructure/repositories';
 import { CreateItemCommand } from '../impl';
 
 @CommandHandler(CreateItemCommand)

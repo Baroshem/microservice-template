@@ -7,11 +7,7 @@ import {
   EventStoreSubscriptionType,
 } from '@juicycleff/nestjs-event-store';
 
-import {
-  ItemReadRepository,
-  ItemWriteRepository,
-  ItemRepository,
-} from './repositories';
+import { ItemRepository } from './repositories';
 import { EventHandlers } from './events/handlers';
 import { ItemController } from './controllers';
 import { ItemService } from './services';
@@ -25,10 +21,11 @@ import {
 import { ApplicationModule } from './application/application.module';
 import { DomainModule } from './domain/domain.module';
 import { InfrastructureModule } from './infrastructure/infrastructure.module';
+import { ItemReadRepository, ItemWriteRepository } from './infrastructure/repositories';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([ItemReadRepository, ItemWriteRepository]),
+    // TypeOrmModule.forFeature([ItemReadRepository, ItemWriteRepository]),
     CqrsModule,
     EventStoreModule.registerFeature({
       featureStreamName: '$ce-item',

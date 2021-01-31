@@ -2,7 +2,8 @@ import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { ItemReadRepository, ItemRepository, ItemWriteRepository } from '../repositories';
+import { ItemReadRepository, ItemWriteRepository } from '../infrastructure/repositories';
+import { ItemRepository } from '../repositories';
 import { CommandHandlers } from './commands/handlers';
 import { QueryHandlers } from './queries/handlers';
 
