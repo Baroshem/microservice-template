@@ -14,6 +14,6 @@ import { QueryHandlers } from './queries/handlers';
     providers: [
         ...CommandHandlers,
         ...QueryHandlers,
-    ]
+    ],
 })
 export class ApplicationModule {}

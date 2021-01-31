@@ -2,7 +2,7 @@ import {
   ItemCreatedEvent,
   ItemDeletedEvent,
   ItemUpdatedEvent,
-} from '../events/impl';
+} from '../domain/events/impl';
 
 export type ItemEventType =
   | ItemCreatedEvent

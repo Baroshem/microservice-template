@@ -8,7 +8,7 @@ import {
   ItemCreatedEvent,
   ItemUpdatedEvent,
   ItemDeletedEvent,
-} from '../events/impl';
+} from '../domain/events/impl';
 
 @Injectable()
 export class ItemSagas {

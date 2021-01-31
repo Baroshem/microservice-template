@@ -6,7 +6,7 @@ import {
   ItemDeletedEvent,
   ItemOwnerNotifiedEvent,
   ItemUpdatedEvent,
-} from '../../events/impl';
+} from '../events/impl';
 import { ItemEventType } from '../../types';
 
 export class Item extends AggregateRoot {
