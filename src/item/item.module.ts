@@ -24,6 +24,9 @@ import {
   ItemUpdatedEvent,
   ItemOwnerNotifiedEvent,
 } from './events/impl';
+import { ApplicationModule } from './application/application.module';
+import { DomainModule } from './domain/domain.module';
+import { InfrastructureModule } from './infrastructure/infrastructure.module';
 
 @Module({
   imports: [
@@ -45,6 +48,9 @@ import {
         ItemOwnerNotifiedEvent: (data) => new ItemOwnerNotifiedEvent(data),
       },
     }),
+    ApplicationModule,
+    DomainModule,
+    InfrastructureModule,
   ],
   controllers: [ItemController],
   providers: [
