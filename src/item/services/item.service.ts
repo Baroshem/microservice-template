@@ -7,7 +7,7 @@ import {
   DeleteItemByIdCommand,
   UpdateItemCommand,
 } from '../application/commands/impl';
-import { GetItemByIdQuery, GetItemsQuery } from '../queries/impl';
+import { GetItemByIdQuery, GetItemsQuery } from '../application/queries/impl';
 import { CreateItemDto, GetItemsDto, UpdateItemDto } from '../dtos';
 
 @Injectable()

@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ItemReadRepository, ItemRepository, ItemWriteRepository } from '../repositories';
 import { CommandHandlers } from './commands/handlers';
+import { QueryHandlers } from './queries/handlers';
 
 @Module({
     imports: [
@@ -12,6 +13,7 @@ import { CommandHandlers } from './commands/handlers';
     ],
     providers: [
         ...CommandHandlers,
+        ...QueryHandlers,
         ItemRepository,
     ]
 })
