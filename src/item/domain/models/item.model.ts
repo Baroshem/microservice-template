@@ -1,13 +1,13 @@
 import { AggregateRoot } from '@nestjs/cqrs';
 
-import { CreateItemDto, UpdateItemDto } from '../dtos';
+import { CreateItemDto, UpdateItemDto } from '../../dtos';
 import {
   ItemCreatedEvent,
   ItemDeletedEvent,
   ItemOwnerNotifiedEvent,
   ItemUpdatedEvent,
-} from '../events/impl';
-import { ItemEventType } from '../types';
+} from '../../events/impl';
+import { ItemEventType } from '../../types';
 
 export class Item extends AggregateRoot {
   constructor(private readonly id?: number) {

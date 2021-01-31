@@ -21,11 +21,9 @@ import {
 import { ApplicationModule } from './application/application.module';
 import { DomainModule } from './domain/domain.module';
 import { InfrastructureModule } from './infrastructure/infrastructure.module';
-import { ItemReadRepository, ItemWriteRepository } from './infrastructure/repositories';
 
 @Module({
   imports: [
-    // TypeOrmModule.forFeature([ItemReadRepository, ItemWriteRepository]),
     CqrsModule,
     EventStoreModule.registerFeature({
       featureStreamName: '$ce-item',

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 import { CreateItemDto, UpdateItemDto } from '../dtos';
-import { Item } from '../models';
+import { Item } from '../domain/models';
 import { ItemEventType } from '../types';
 
 @Injectable()
