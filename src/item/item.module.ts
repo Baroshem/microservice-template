@@ -7,7 +7,6 @@ import {
   EventStoreSubscriptionType,
 } from '@juicycleff/nestjs-event-store';
 
-import { ItemRepository } from './repositories';
 import { EventHandlers } from './events/handlers';
 import { ItemController } from './controllers';
 import { ItemService } from './services';
@@ -51,7 +50,6 @@ import { InfrastructureModule } from './infrastructure/infrastructure.module';
     ...EventHandlers,
     ItemService,
     ItemSagas,
-    ItemRepository,
   ],
 })
 export class ItemModule {}

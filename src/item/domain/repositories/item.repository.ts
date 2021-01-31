@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
-import { CreateItemDto, UpdateItemDto } from '../dtos';
-import { Item } from '../domain/models';
-import { ItemEventType } from '../types';
+import { CreateItemDto, UpdateItemDto } from '../../dtos';
+import { Item } from '../models';
+import { ItemEventType } from '../../types';
 
 @Injectable()
 export class ItemRepository {

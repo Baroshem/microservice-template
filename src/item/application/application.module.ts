@@ -3,7 +3,6 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ItemReadRepository, ItemWriteRepository } from '../infrastructure/repositories';
-import { ItemRepository } from '../repositories';
 import { CommandHandlers } from './commands/handlers';
 import { QueryHandlers } from './queries/handlers';
 
@@ -15,7 +14,6 @@ import { QueryHandlers } from './queries/handlers';
     providers: [
         ...CommandHandlers,
         ...QueryHandlers,
-        ItemRepository,
     ]
 })
 export class ApplicationModule {}
