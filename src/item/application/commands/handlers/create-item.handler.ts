@@ -1,9 +1,10 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { ErrorValidationService, RpcExceptionService } from '../../../utils';
-import { ItemEntity } from '../../entities';
-import { ItemRepository, ItemWriteRepository } from '../../repositories';
+import { ErrorValidationService, RpcExceptionService } from '../../../../utils';
+import { ItemEntity } from '../../../infrastructure/entities';
+import { ItemRepository } from '../../../domain/repositories';
+import { ItemWriteRepository } from '../../../infrastructure/repositories';
 import { CreateItemCommand } from '../impl';
 
 @CommandHandler(CreateItemCommand)
