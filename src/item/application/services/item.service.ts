@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
-import { ItemEntity } from '../infrastructure/entities';
+import { ItemEntity } from '../../infrastructure/entities';
 import {
   CreateItemCommand,
   DeleteItemByIdCommand,
   UpdateItemCommand,
-} from '../application/commands/impl';
-import { GetItemByIdQuery, GetItemsQuery } from '../application/queries/impl';
-import { CreateItemDto, GetItemsDto, UpdateItemDto } from '../dtos';
+} from '../commands/impl';
+import { GetItemByIdQuery, GetItemsQuery } from '../queries/impl';
+import { CreateItemDto, GetItemsDto, UpdateItemDto } from '../../dtos';
 
 @Injectable()
 export class ItemService {

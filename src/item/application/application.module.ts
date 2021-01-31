@@ -6,6 +6,7 @@ import { ItemReadRepository, ItemWriteRepository } from '../infrastructure/repos
 import { CommandHandlers } from './commands/handlers';
 import { ItemController } from './controllers';
 import { QueryHandlers } from './queries/handlers';
+import { ItemService } from './services';
 
 @Module({
     imports: [
@@ -16,6 +17,7 @@ import { QueryHandlers } from './queries/handlers';
     providers: [
         ...CommandHandlers,
         ...QueryHandlers,
+        ItemService,
     ],
 })
 export class ApplicationModule {}

@@ -3,7 +3,7 @@ import { MessagePattern } from '@nestjs/microservices';
 
 import { CreateItemDto, GetItemsDto, UpdateItemDto } from '../../dtos';
 import { ItemEntity } from '../../infrastructure/entities';
-import { ItemService } from '../../services';
+import { ItemService } from '../services';
 
 @Controller('item')
 export class ItemController {
