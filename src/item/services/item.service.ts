@@ -6,7 +6,7 @@ import {
   CreateItemCommand,
   DeleteItemByIdCommand,
   UpdateItemCommand,
-} from '../commands/impl';
+} from '../application/commands/impl';
 import { GetItemByIdQuery, GetItemsQuery } from '../queries/impl';
 import { CreateItemDto, GetItemsDto, UpdateItemDto } from '../dtos';
 

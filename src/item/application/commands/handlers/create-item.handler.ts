@@ -1,13 +1,13 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { UpdateItemCommand } from '../impl';
-import { RpcExceptionService, ErrorValidationService } from '../../../utils';
-import { ItemEntity } from '../../entities';
-import { ItemWriteRepository, ItemRepository } from '../../repositories';
+import { ErrorValidationService, RpcExceptionService } from '../../../../utils';
+import { ItemEntity } from '../../../entities';
+import { ItemRepository, ItemWriteRepository } from '../../../repositories';
+import { CreateItemCommand } from '../impl';
 
-@CommandHandler(UpdateItemCommand)
-export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
+@CommandHandler(CreateItemCommand)
+export class CreateItemHandler implements ICommandHandler<CreateItemCommand> {
   constructor(
     @InjectRepository(ItemWriteRepository)
     private readonly itemWriteRepository: ItemWriteRepository,
@@ -17,20 +17,18 @@ export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
     private readonly errorValidationService: ErrorValidationService,
   ) {}
 
-  async execute(command: UpdateItemCommand): Promise<ItemEntity> {
-    const { updateItemDto } = command;
+  async execute(command: CreateItemCommand): Promise<ItemEntity> {
+    const { createItemDto } = command;
 
-    const item = await this.itemWriteRepository.findOne(updateItemDto.id);
+    const item = this.itemWriteRepository.create();
 
-    if (!item) this.rpcExceptionService.throwNotFound('Item not found');
-
-    item.name = updateItemDto.name;
+    item.name = createItemDto.name;
 
     try {
       await item.save();
 
-      const itemModel = await this.publisher.mergeObjectContext(
-        this.itemRepository.updateItem(updateItemDto),
+      const itemModel = this.publisher.mergeObjectContext(
+        await this.itemRepository.createItem(createItemDto),
       );
 
       itemModel.commit();

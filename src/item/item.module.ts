@@ -12,7 +12,6 @@ import {
   ItemWriteRepository,
   ItemRepository,
 } from './repositories';
-import { CommandHandlers } from './commands/handlers';
 import { QueryHandlers } from './queries/handlers';
 import { EventHandlers } from './events/handlers';
 import { ItemController } from './controllers';
@@ -56,7 +55,6 @@ import { InfrastructureModule } from './infrastructure/infrastructure.module';
   providers: [
     ConfigService,
     ...QueryHandlers,
-    ...CommandHandlers,
     ...EventHandlers,
     ItemService,
     ItemSagas,
