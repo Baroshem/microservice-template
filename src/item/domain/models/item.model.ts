@@ -7,7 +7,7 @@ import {
   ItemOwnerNotifiedEvent,
   ItemUpdatedEvent,
 } from '../events/impl';
-import { ItemEventType } from '../../types';
+import { ItemEventType } from '../types';
 
 export class Item extends AggregateRoot {
   constructor(private readonly id?: number) {
