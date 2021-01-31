@@ -33,6 +33,7 @@
     "amqp-connection-manager": "^3.2.1",
     "amqplib": "^0.6.0",
     "node-eventstore-client": "^0.2.18",
+    "node-nats-streaming": "^0.3.2",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
