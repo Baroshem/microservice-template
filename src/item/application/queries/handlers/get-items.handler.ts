@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { ItemEntity } from '../../../entities';
+import { ItemEntity } from '../../../infrastructure/entities';
 import { ItemReadRepository } from '../../../infrastructure/repositories';
 import { RpcExceptionService } from '../../../../utils';
 import { GetItemsQuery } from '../impl';
