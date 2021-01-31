@@ -8,7 +8,7 @@ import {
   UpdateItemCommand,
 } from '../commands/impl';
 import { GetItemByIdQuery, GetItemsQuery } from '../queries/impl';
-import { CreateItemDto, GetItemsDto, UpdateItemDto } from '../../dtos';
+import { CreateItemDto, GetItemsDto, UpdateItemDto } from '../dtos';
 
 @Injectable()
 export class ItemService {
