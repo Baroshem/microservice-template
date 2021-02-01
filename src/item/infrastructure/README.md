@@ -7,3 +7,4 @@ This directory contains:
 
 - `entities` -> Contains Typeorm entities that reflect database tables.
 - `repositories` -> Used for communicating with the database and certain entities (tables).
+- InfrastructureModule -> wrapper for infrastructure related code.

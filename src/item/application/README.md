@@ -10,3 +10,4 @@ This directory contains:
 - `dtos` -> Data Transfer Objects used for modeling how data travels across the application.
 - `queries` -> CQRS Queries and Query Handlers. They perform Database reads.
 - `services` -> Triggers commands and queries with data provided by Controller.
+- ApplicationModule -> wrapper for application related code.

@@ -10,3 +10,4 @@ This directory contains:
 - `repositories` -> Responsible for communicating to the Aggregate Root from Command Handlers.
 - `sagas` -> Sagas allow to react for events
 - `types` -> Optional. Contains usefult event types that can be used across the application.
+- DomainModule -> wrapper for domain related code.
