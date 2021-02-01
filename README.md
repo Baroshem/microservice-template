@@ -15,19 +15,20 @@
     <a href="https://github.com/otasoft/otasoft-auth/issues">Request Feature</a>
   </p>
   <p align="center">
-    <!-- <a href="https://github.com/otasoft/otasoft-api/actions"><img src="https://github.com/otasoft/otasoft-api/workflows/Node.js%20CI/badge.svg?branch=master" alt="CI"></a> -->
+    <a href="https://github.com/otasoft/microservice-template/actions"><img src="https://github.com/otasoft/microservice-template/workflows/Node.js%20CI/badge.svg?branch=master" alt="CI"></a>
 </p>
 
 # About The Project
 
-Otasoft Microservice template - Basic template for creating new microservices
+Otasoft Microservice template - [Nest.js](https://nestjs.com) based microservice repository template. This project consists of:
 
-* PostgreSQL
+* PostgreSQL Typeorm
 * CQRS
+* Domain Driven Design
+* Event Sourcing
 * Healthchecks
 * .env support
-* Typeorm
-* Utils (exceptions, microservice connection, mocks, ...)
+* Utils (Rpc exceptions, validating DB errors, service mocks)
 * Dockerfile and docker-compose
 * doc directory
 * Github workflows and issue templates
@@ -41,6 +42,7 @@ Otasoft projects are and always will be open source (MIT Licence). Anyone can us
 * [Contributing](#contributing)
 * [How to support](#how-to-support)
 * [Contact](#contact)
+* [Special Thanks](#special-thanks)
 * [License](#license)
 
 <!-- GETTING STARTED -->
@@ -52,7 +54,7 @@ To start developing the project please check if you have these tools installed o
 * [Yarn](https://yarnpkg.com/getting-started/install)
 * [Docker](https://www.docker.com/get-started)
 
-Installation
+### Installation
 
 1. Clone the repo
 
@@ -90,6 +92,64 @@ docker-compose up
 yarn start:dev
 ```
 
+### Testing as a normal web server instead of microservice
+
+1. Replace bootstrap logic inside `main.ts` from microservice
+
+```typescript
+  const app = await NestFactory.createMicroservice(AppModule, {
+    transport: Transport.RMQ,
+    options: {
+      urls: [
+        `amqp://${process.env.RABBITMQ_DEFAULT_USER}:${process.env.RABBITMQ_DEFAULT_PASS}@${process.env.RABBITMQ_NODENAME}:${process.env.RABBITMQ_FIRST_HOST_PORT}/${process.env.RABBITMQ_DEFAULT_VHOST}`,
+      ],
+      queue: 'microservice_queue',
+      queueOptions: {
+        durable: false,
+      },
+    },
+  });
+
+  await app.listen(() => {
+    logger.log('Microservice is listening');
+  });
+```
+
+2. To basic web HTTP server
+
+```typescript
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
+```
+
+3. Replace message pattern in controller
+
+```typescript
+  @MessagePattern({ role: 'item', cmd: 'get-by-id' })
+  async getItemById(id: number): Promise<ItemEntity> {
+    return this.itemService.getItemById(id);
+  }
+
+  @MessagePattern({ role: 'item', cmd: 'create' })
+  async createItem(createItemDto: CreateItemDto): Promise<ItemEntity> {
+    return this.itemService.createItem(createItemDto);
+  }
+```
+
+4. To HTTP methods (with Decorators like `@Body()`, `@Param()`)
+
+```typescript
+  @Get('/get-by-id/:id')
+  async getItemById(@Param('id') id: number): Promise<ItemEntity> {
+    return this.itemService.getItemById(id);
+  }
+
+  @Post('/create')
+  async createItem(@Body() createItemDto: CreateItemDto): Promise<ItemEntity> {
+    return this.itemService.createItem(createItemDto);
+  }
+```
+
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -114,6 +174,11 @@ Core team and contributors in the Otasoft ecosystem spend their free and off wor
 ## Contact
 
 Founder -> [Jakub Andrzejewski](https://www.linkedin.com/in/jakub-andrzejewski/)
+
+<!-- THANKS -->
+## Special Thanks
+
+This project wouldn't be possible without amazing work of [Kamil Myśliwiec](https://github.com/kamilmysliwiec) and the [Nest.js Core Team](https://github.com/orgs/nestjs/people). Keep doing the awesome work!
 
 <!-- LICENSE -->
 ## License
