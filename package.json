@@ -32,6 +32,7 @@
     "@nestjs/typeorm": "^7.1.5",
     "amqp-connection-manager": "^3.2.1",
     "amqplib": "^0.6.0",
+    "module-alias": "^2.2.2",
     "node-eventstore-client": "^0.2.18",
     "node-nats-streaming": "^0.3.2",
     "pg": "^8.5.1",
@@ -75,5 +76,11 @@
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "_moduleAliases": {
+    "@infrastructure": "dist/item/infrastructure",
+    "@domain": "dist/item/domain",
+    "@application": "dist/item/application",
+    "@database": "dist/database"
   }
 }

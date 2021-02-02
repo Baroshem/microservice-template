@@ -2,9 +2,9 @@ import { QueryHandler, IQueryHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RpcException } from '@nestjs/microservices';
 
+import { ItemEntity } from '@infrastructure/entities';
+import { ItemReadRepository } from '@infrastructure/repositories';
 import { GetItemByIdQuery } from '../impl';
-import { ItemEntity } from '../../../infrastructure/entities';
-import { ItemReadRepository } from '../../../infrastructure/repositories';
 
 @QueryHandler(GetItemByIdQuery)
 export class GetItemByIdHandler implements IQueryHandler<GetItemByIdQuery> {
