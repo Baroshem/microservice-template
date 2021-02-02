@@ -1,11 +1,12 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
+import { RpcException } from '@nestjs/microservices';
 
 import { UpdateItemCommand } from '../impl';
-import { RpcExceptionService, ErrorValidationService } from '../../../../utils';
 import { ItemEntity } from '../../../infrastructure/entities';
 import { ItemRepository } from '../../../domain/repositories';
 import { ItemWriteRepository } from '../../../infrastructure/repositories';
+import { validateDbError } from '../../../../database/helpers';
 
 @CommandHandler(UpdateItemCommand)
 export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
@@ -14,8 +15,6 @@ export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
     private readonly itemWriteRepository: ItemWriteRepository,
     private readonly itemRepository: ItemRepository,
     private readonly publisher: EventPublisher,
-    private readonly rpcExceptionService: RpcExceptionService,
-    private readonly errorValidationService: ErrorValidationService,
   ) {}
 
   async execute(command: UpdateItemCommand): Promise<ItemEntity> {
@@ -23,7 +22,11 @@ export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
 
     const item = await this.itemWriteRepository.findOne(updateItemDto.id);
 
-    if (!item) this.rpcExceptionService.throwNotFound('Item not found');
+    if (!item)
+      throw new RpcException({
+        statusCode: 404,
+        errorStatus: 'Item not found',
+      });
 
     item.name = updateItemDto.name;
 
@@ -38,11 +41,9 @@ export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
 
       return item;
     } catch (error) {
-      const errorObject = this.errorValidationService.validateDbError(
-        error.code,
-      );
+      const { code, message } = validateDbError(error.code);
 
-      this.rpcExceptionService.throwCatchedException(errorObject);
+      throw new RpcException({ statusCode: code, errorStatus: message });
     }
   }
 }
