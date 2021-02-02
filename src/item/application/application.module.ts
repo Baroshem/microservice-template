@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import {
   ItemReadRepository,
   ItemWriteRepository,
-} from '../infrastructure/repositories';
+} from '@infrastructure/repositories';
 import { CommandHandlers } from './commands/handlers';
 import { ItemController } from './controllers';
 import { QueryHandlers } from './queries/handlers';
