@@ -23,7 +23,11 @@ export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
 
     const item = await this.itemWriteRepository.findOne(updateItemDto.id);
 
-    if (!item) throw new RpcException({ statusCode: 404, errorStatus: 'Item not found' })
+    if (!item)
+      throw new RpcException({
+        statusCode: 404,
+        errorStatus: 'Item not found',
+      });
 
     item.name = updateItemDto.name;
 
@@ -42,7 +46,7 @@ export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
         error.code,
       );
 
-      throw new RpcException({ statusCode: code, errorStatus: message })
+      throw new RpcException({ statusCode: code, errorStatus: message });
     }
   }
 }

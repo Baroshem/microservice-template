@@ -18,7 +18,11 @@ export class GetItemsHandler implements IQueryHandler<GetItemsQuery> {
 
     const items = await this.itemReadRepository.find({ take: limit });
 
-    if (!items.length) throw new RpcException({ statusCode: 404, errorStatus: 'Items not found' });
+    if (!items.length)
+      throw new RpcException({
+        statusCode: 404,
+        errorStatus: 'Items not found',
+      });
 
     return items;
   }

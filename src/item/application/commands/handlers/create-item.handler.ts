@@ -40,7 +40,7 @@ export class CreateItemHandler implements ICommandHandler<CreateItemCommand> {
         error.code,
       );
 
-      throw new RpcException({ statusCode: code, errorStatus: message })
+      throw new RpcException({ statusCode: code, errorStatus: message });
     }
   }
 }

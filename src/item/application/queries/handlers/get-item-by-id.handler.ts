@@ -17,7 +17,11 @@ export class GetItemByIdHandler implements IQueryHandler<GetItemByIdQuery> {
     const { id } = query;
     const item = await this.itemReadRepository.findOne(id);
 
-    if (!item) throw new RpcException({ statusCode: 404, errorStatus: `Item with ID: ${id} not found` })
+    if (!item)
+      throw new RpcException({
+        statusCode: 404,
+        errorStatus: `Item with ID: ${id} not found`,
+      });
 
     return item;
   }

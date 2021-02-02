@@ -22,7 +22,11 @@ export class DeleteItemByIdHandler
   async execute(command: DeleteItemByIdCommand): Promise<ItemEntity> {
     const item = await this.itemWriteRepository.findOne(command.id);
 
-    if (!item) throw new RpcException({ statusCode: 404, errorStatus: 'Cannot delete item because the item was not found' })
+    if (!item)
+      throw new RpcException({
+        statusCode: 404,
+        errorStatus: 'Cannot delete item because the item was not found',
+      });
 
     try {
       await this.itemWriteRepository.delete(item);
@@ -38,7 +42,7 @@ export class DeleteItemByIdHandler
         error.code,
       );
 
-      throw new RpcException({ statusCode: code, errorStatus: message })
+      throw new RpcException({ statusCode: code, errorStatus: message });
     }
   }
 }

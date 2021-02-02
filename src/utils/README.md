@@ -8,5 +8,4 @@ Utils module. It is a collection of useful services that can be used accross the
 This directory contains:
 
 - UtilsModule which wraps all utils services
-- `error-validation` directory with  ErrorValidationService and index.ts exporting that service
 - `mocks` directory with mockedConfigService and index.ts exporting that service
