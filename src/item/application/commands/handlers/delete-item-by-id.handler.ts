@@ -1,8 +1,9 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
+import { RpcException } from '@nestjs/microservices';
 
 import { DeleteItemByIdCommand } from '../impl';
-import { RpcExceptionService, ErrorValidationService } from '../../../../utils';
+import { ErrorValidationService } from '../../../../utils';
 import { ItemEntity } from '../../../infrastructure/entities';
 import { ItemRepository } from '../../../domain/repositories';
 import { ItemWriteRepository } from '../../../infrastructure/repositories';
@@ -15,17 +16,13 @@ export class DeleteItemByIdHandler
     private readonly itemWriteRepository: ItemWriteRepository,
     private readonly itemRepository: ItemRepository,
     private readonly publisher: EventPublisher,
-    private readonly rpcExceptionService: RpcExceptionService,
     private readonly errorValidationService: ErrorValidationService,
   ) {}
 
   async execute(command: DeleteItemByIdCommand): Promise<ItemEntity> {
     const item = await this.itemWriteRepository.findOne(command.id);
 
-    if (!item)
-      this.rpcExceptionService.throwNotFound(
-        'Cannot delete item because the item was not found',
-      );
+    if (!item) throw new RpcException({ statusCode: 404, errorStatus: 'Cannot delete item because the item was not found' })
 
     try {
       await this.itemWriteRepository.delete(item);
@@ -37,11 +34,11 @@ export class DeleteItemByIdHandler
 
       return item;
     } catch (error) {
-      const errorObject = this.errorValidationService.validateDbError(
+      const { code, message } = this.errorValidationService.validateDbError(
         error.code,
       );
 
-      this.rpcExceptionService.throwCatchedException(errorObject);
+      throw new RpcException({ statusCode: code, errorStatus: message })
     }
   }
 }

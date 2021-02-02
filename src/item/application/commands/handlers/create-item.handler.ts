@@ -1,7 +1,8 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
+import { RpcException } from '@nestjs/microservices';
 
-import { ErrorValidationService, RpcExceptionService } from '../../../../utils';
+import { ErrorValidationService } from '../../../../utils';
 import { ItemEntity } from '../../../infrastructure/entities';
 import { ItemRepository } from '../../../domain/repositories';
 import { ItemWriteRepository } from '../../../infrastructure/repositories';
@@ -14,7 +15,6 @@ export class CreateItemHandler implements ICommandHandler<CreateItemCommand> {
     private readonly itemWriteRepository: ItemWriteRepository,
     private readonly itemRepository: ItemRepository,
     private readonly publisher: EventPublisher,
-    private readonly rpcExceptionService: RpcExceptionService,
     private readonly errorValidationService: ErrorValidationService,
   ) {}
 
@@ -36,11 +36,11 @@ export class CreateItemHandler implements ICommandHandler<CreateItemCommand> {
 
       return item;
     } catch (error) {
-      const errorObject = this.errorValidationService.validateDbError(
+      const { code, message } = this.errorValidationService.validateDbError(
         error.code,
       );
 
-      this.rpcExceptionService.throwCatchedException(errorObject);
+      throw new RpcException({ statusCode: code, errorStatus: message })
     }
   }
 }
