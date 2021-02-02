@@ -76,5 +76,11 @@
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "_moduleAliases": {
+    "@infrastructure": "dist/item/infrastructure",
+    "@domain": "dist/item/domain",
+    "@application": "dist/item/application",
+    "@database": "dist/database"
   }
 }
