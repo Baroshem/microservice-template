@@ -1,18 +1,18 @@
 <br />
 <p align="center">
-  <a href="https://github.com/otasoft/otasoft-auth">
+  <a href="https://github.com/otasoft/microservice-template">
     <img src="doc/microservice-template-logo.png" alt="Otasoft Logo" width="128" height="128">
   </a>
 
-  <h1 align="center">Otasoft Microservice Template - Basic template for creating new microservices</h1>
+  <h1 align="center">Otasoft Microservice Template - Template for creating Nest.js microservices</h1>
 
   <p align="center">
-    <!-- <a href="https://github.com/otasoft/otasoft-auth"><strong>Explore the docs »</strong></a> -->
-    <!-- <a href="https://github.com/otasoft/otasoft-auth">View Demo</a> -->
+    <!-- <a href="https://github.com/otasoft/microservice-template"><strong>Explore the docs »</strong></a> -->
+    <!-- <a href="https://github.com/otasoft/microservice-template">View Demo</a> -->
     <!-- · -->
-    <a href="https://github.com/otasoft/otasoft-auth/issues">Report Bug</a>
+    <a href="https://github.com/otasoft/microservice-template/issues">Report Bug</a>
     ·
-    <a href="https://github.com/otasoft/otasoft-auth/issues">Request Feature</a>
+    <a href="https://github.com/otasoft/microservice-template/issues">Request Feature</a>
   </p>
   <p align="center">
     <a href="https://github.com/otasoft/microservice-template/actions"><img src="https://github.com/otasoft/microservice-template/workflows/Node.js%20CI/badge.svg?branch=master" alt="CI"></a>
@@ -28,7 +28,7 @@ Otasoft Microservice template - [Nest.js](https://nestjs.com) based microservice
 * Event Sourcing
 * Healthchecks
 * .env support
-* Utils (Rpc exceptions, validating DB errors, service mocks)
+* RabbitMQ Event Bus Connection
 * Dockerfile and docker-compose
 * doc directory
 * Github workflows and issue templates
@@ -150,10 +150,12 @@ yarn start:dev
   }
 ```
 
+5. Test locally with [Postman](https://www.postman.com/) and [TablePlus](https://tableplus.com/)
+
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/otasoft/otasoft-auth/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/otasoft/microservice-template/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 ## Contributing

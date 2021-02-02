@@ -1,6 +1,6 @@
 {
   "name": "@otasoft/microservice-template",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "Nest.js based microservice repository template",
   "author": "Jakub Andrzejewski",
   "license": "MIT",
