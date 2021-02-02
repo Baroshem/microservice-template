@@ -2,7 +2,6 @@
 
 Utils module. It is a collection of useful services that can be used accross the application:
 
-- ErrorValidationService -> Useful for validating internal database errors
 - MockedService -> Useful for mocking services while running unit tests
 
 This directory contains:

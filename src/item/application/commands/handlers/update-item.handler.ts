@@ -3,10 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { RpcException } from '@nestjs/microservices';
 
 import { UpdateItemCommand } from '../impl';
-import { ErrorValidationService } from '../../../../utils';
 import { ItemEntity } from '../../../infrastructure/entities';
 import { ItemRepository } from '../../../domain/repositories';
 import { ItemWriteRepository } from '../../../infrastructure/repositories';
+import { validateDbError } from '../../../../database/helpers';
 
 @CommandHandler(UpdateItemCommand)
 export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
@@ -15,7 +15,6 @@ export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
     private readonly itemWriteRepository: ItemWriteRepository,
     private readonly itemRepository: ItemRepository,
     private readonly publisher: EventPublisher,
-    private readonly errorValidationService: ErrorValidationService,
   ) {}
 
   async execute(command: UpdateItemCommand): Promise<ItemEntity> {
@@ -42,9 +41,7 @@ export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
 
       return item;
     } catch (error) {
-      const { code, message } = this.errorValidationService.validateDbError(
-        error.code,
-      );
+      const { code, message } = validateDbError(error.code);
 
       throw new RpcException({ statusCode: code, errorStatus: message });
     }
