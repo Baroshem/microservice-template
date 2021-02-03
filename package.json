@@ -75,7 +75,14 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "@infrastructure/(.*)": "<rootDir>/item/infrastructure/$1",
+      "@domain/(.*)": "<rootDir>/item/domain/$1",
+      "@application/(.*)": "<rootDir>/item/application/$1",
+      "@database/(.*)": "<rootDir>/database/$1",
+      "@test/(.*)": "<rootDir>/../test/$1"
+    }
   },
   "_moduleAliases": {
     "@infrastructure": "dist/item/infrastructure",
