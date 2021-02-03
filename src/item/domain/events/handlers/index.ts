@@ -1,7 +1,7 @@
-import { ItemCreatedHandler } from './item-created.handler';
-import { ItemDeletedHandler } from './item-deleted.handler';
-import { ItemOwnerNotifiedHandler } from './item-owner-notified.handler';
-import { ItemUpdatedHandler } from './item-updated.handler';
+import { ItemCreatedHandler } from './item-created';
+import { ItemDeletedHandler } from './item-deleted';
+import { ItemOwnerNotifiedHandler } from './item-owner-notified';
+import { ItemUpdatedHandler } from './item-updated';
 
 export const EventHandlers = [
   ItemDeletedHandler,

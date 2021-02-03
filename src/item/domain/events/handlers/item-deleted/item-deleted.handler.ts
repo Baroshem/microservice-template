@@ -1,6 +1,6 @@
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 
-import { ItemDeletedEvent } from '../impl';
+import { ItemDeletedEvent } from '../../impl';
 
 @EventsHandler(ItemDeletedEvent)
 export class ItemDeletedHandler implements IEventHandler<ItemDeletedEvent> {
