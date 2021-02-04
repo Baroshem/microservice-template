@@ -1,3 +1,3 @@
-export * from './create-item.dto';
-export * from './update-item.dto';
-export * from './get-items.dto';
+export * from './create-item';
+export * from './update-item';
+export * from './get-items';
