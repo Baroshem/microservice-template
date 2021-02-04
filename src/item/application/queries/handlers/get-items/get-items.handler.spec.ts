@@ -13,7 +13,7 @@ const mockedItems = [
   new ItemEntity(3, 'Test2'),
 ];
 
-describe('GetItemByIdHandler', () => {
+describe('GetItemsHandler', () => {
   let handler: GetItemsHandler;
   let repo: Repository<ItemEntity>;
 
@@ -41,7 +41,7 @@ describe('GetItemByIdHandler', () => {
     expect(handler).toBeDefined();
   });
 
-  it('should call repo to get item by id', async () => {
+  it('should call repo to get items', async () => {
     const items = await handler.execute({
       getItemsDto: { limit: 3, order: 'ASC' },
     });

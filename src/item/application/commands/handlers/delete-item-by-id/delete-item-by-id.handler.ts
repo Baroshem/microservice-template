@@ -6,10 +6,11 @@ import { ItemEntity } from '@infrastructure/entities';
 import { ItemRepository } from '@domain/repositories';
 import { ItemWriteRepository } from '@infrastructure/repositories';
 import { validateDbError } from '@database/helpers';
-import { CreateItemCommand } from '../impl';
+import { DeleteItemByIdCommand } from '../../impl';
 
-@CommandHandler(CreateItemCommand)
-export class CreateItemHandler implements ICommandHandler<CreateItemCommand> {
+@CommandHandler(DeleteItemByIdCommand)
+export class DeleteItemByIdHandler
+  implements ICommandHandler<DeleteItemByIdCommand> {
   constructor(
     @InjectRepository(ItemWriteRepository)
     private readonly itemWriteRepository: ItemWriteRepository,
@@ -17,20 +18,21 @@ export class CreateItemHandler implements ICommandHandler<CreateItemCommand> {
     private readonly publisher: EventPublisher,
   ) {}
 
-  async execute(command: CreateItemCommand): Promise<ItemEntity> {
-    const { createItemDto } = command;
+  async execute(command: DeleteItemByIdCommand): Promise<ItemEntity> {
+    const item = await this.itemWriteRepository.findOne(command.id);
 
-    const item = this.itemWriteRepository.create();
-
-    item.name = createItemDto.name;
+    if (!item)
+      throw new RpcException({
+        statusCode: 404,
+        errorStatus: 'Cannot delete item because the item was not found',
+      });
 
     try {
-      await item.save();
+      await this.itemWriteRepository.delete(item);
 
       const itemModel = this.publisher.mergeObjectContext(
-        await this.itemRepository.createItem(createItemDto),
+        await this.itemRepository.deleteItem(command.id),
       );
-
       itemModel.commit();
 
       return item;

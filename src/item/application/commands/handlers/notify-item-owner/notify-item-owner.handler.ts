@@ -1,7 +1,7 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 
 import { ItemRepository } from '@domain/repositories';
-import { NotifyItemOwnerCommand } from '../impl';
+import { NotifyItemOwnerCommand } from '../../impl';
 
 @CommandHandler(NotifyItemOwnerCommand)
 export class NotifyItemOwnerHandler

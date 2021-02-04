@@ -6,7 +6,7 @@ import { ItemEntity } from '@infrastructure/entities';
 import { ItemRepository } from '@domain/repositories';
 import { ItemWriteRepository } from '@infrastructure/repositories';
 import { validateDbError } from '@database/helpers';
-import { UpdateItemCommand } from '../impl';
+import { UpdateItemCommand } from '../../impl';
 
 @CommandHandler(UpdateItemCommand)
 export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
@@ -31,7 +31,9 @@ export class UpdateItemHandler implements ICommandHandler<UpdateItemCommand> {
     item.name = updateItemDto.name;
 
     try {
-      await item.save();
+      await this.itemWriteRepository.update(updateItemDto.id, {
+        name: updateItemDto.name,
+      });
 
       const itemModel = await this.publisher.mergeObjectContext(
         this.itemRepository.updateItem(updateItemDto),
