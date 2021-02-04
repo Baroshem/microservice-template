@@ -7,8 +7,6 @@ import {
 import { Item } from './item.model';
 
 describe('ItemModel', () => {
-  beforeEach(() => {});
-
   it('should fire ItemCreatedEvent on create', () => {
     const itemModel = new Item();
 
