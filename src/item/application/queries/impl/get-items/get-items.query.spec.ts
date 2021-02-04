@@ -1,4 +1,4 @@
-import { GetItemsQuery } from "./get-items.query";
+import { GetItemsQuery } from './get-items.query';
 
 describe('GetItemsQuery', () => {
   it('should create a GetItemsQuery instance', () => {

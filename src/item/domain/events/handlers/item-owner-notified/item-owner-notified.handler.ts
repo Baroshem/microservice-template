@@ -6,6 +6,8 @@ EventsHandler(ItemOwnerNotifiedEvent);
 export class ItemOwnerNotifiedHandler
   implements IEventHandler<ItemOwnerNotifiedEvent> {
   handle(event: ItemOwnerNotifiedEvent) {
-    console.log(`Handled ItemOwnerNotifiedEvent with data ${JSON.stringify(event)}`);
+    console.log(
+      `Handled ItemOwnerNotifiedEvent with data ${JSON.stringify(event)}`,
+    );
   }
 }

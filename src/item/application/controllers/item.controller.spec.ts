@@ -4,7 +4,6 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { ItemService } from '@application/services';
 import { ItemController } from './item.controller';
 
-
 describe('ItemController', () => {
   let controller: ItemController;
 

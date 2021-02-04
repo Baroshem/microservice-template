@@ -17,7 +17,9 @@ describe('ItemUpdatedHandler', () => {
       const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
       handler.handle({ updateItemDto: { id: 1, name: 'Test' } });
       expect(consoleSpy).toBeCalledTimes(1);
-      expect(consoleSpy).toBeCalledWith('Handled ItemUpdatedEvent with ID: 1 and name: Test');
+      expect(consoleSpy).toBeCalledWith(
+        'Handled ItemUpdatedEvent with ID: 1 and name: Test',
+      );
     });
   });
 });

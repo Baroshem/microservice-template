@@ -1,4 +1,4 @@
-import { CreateItemCommand } from "./create-item.command";
+import { CreateItemCommand } from './create-item.command';
 
 describe('CreateItemCommand', () => {
   it('should create a CreateItemCommand instance', () => {

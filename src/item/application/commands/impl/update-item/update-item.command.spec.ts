@@ -1,4 +1,4 @@
-import { UpdateItemCommand } from "./update-item.command";
+import { UpdateItemCommand } from './update-item.command';
 
 describe('UpdateItemCommand', () => {
   it('should create a UpdateItemCommand instance', () => {

@@ -1,4 +1,4 @@
-import { DeleteItemByIdCommand } from "./delete-item-by-id.command";
+import { DeleteItemByIdCommand } from './delete-item-by-id.command';
 
 describe('DeleteItemByIdCommand', () => {
   it('should create a DeleteItemByIdCommand instance', () => {

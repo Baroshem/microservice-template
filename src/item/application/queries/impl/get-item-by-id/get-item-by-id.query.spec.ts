@@ -1,4 +1,4 @@
-import { GetItemByIdQuery } from "./get-item-by-id.query";
+import { GetItemByIdQuery } from './get-item-by-id.query';
 
 describe('GetItemByIdQuery', () => {
   it('should create a GetItemByIdQuery instance', () => {

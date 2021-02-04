@@ -17,7 +17,9 @@ describe('ItemCreatedHandler', () => {
       const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
       handler.handle({ createItemDto: { name: 'Test' } });
       expect(consoleSpy).toBeCalledTimes(1);
-      expect(consoleSpy).toBeCalledWith('Handled ItemCreatedEvent with name: Test');
+      expect(consoleSpy).toBeCalledWith(
+        'Handled ItemCreatedEvent with name: Test',
+      );
     });
   });
 });

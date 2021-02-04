@@ -5,7 +5,9 @@ import { ItemOwnerNotifiedEvent } from './item-owner-notified.event';
 
 describe('ItemOwnerNotifiedEvent', () => {
   it('should create a ItemOwnerNotifiedEvent instance', () => {
-    const event = new ItemOwnerNotifiedEvent(new ItemCreatedEvent({ name: 'Test' }));
+    const event = new ItemOwnerNotifiedEvent(
+      new ItemCreatedEvent({ name: 'Test' }),
+    );
     expect(event.event).toEqual({ createItemDto: { name: 'Test' } });
     expect(event instanceof ItemOwnerNotifiedEvent).toBe(true);
   });
@@ -17,7 +19,9 @@ describe('ItemOwnerNotifiedEvent', () => {
   });
 
   it('should create a ItemOwnerNotifiedEvent instance', () => {
-    const event = new ItemOwnerNotifiedEvent(new ItemUpdatedEvent({ id: 1, name: 'New test' }));
+    const event = new ItemOwnerNotifiedEvent(
+      new ItemUpdatedEvent({ id: 1, name: 'New test' }),
+    );
     expect(event.event).toEqual({ updateItemDto: { id: 1, name: 'New test' } });
     expect(event instanceof ItemOwnerNotifiedEvent).toBe(true);
   });
