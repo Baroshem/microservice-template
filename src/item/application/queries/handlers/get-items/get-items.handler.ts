@@ -4,7 +4,7 @@ import { RpcException } from '@nestjs/microservices';
 
 import { ItemEntity } from '@infrastructure/entities';
 import { ItemReadRepository } from '@infrastructure/repositories';
-import { GetItemsQuery } from '../impl';
+import { GetItemsQuery } from '../../impl';
 
 @QueryHandler(GetItemsQuery)
 export class GetItemsHandler implements IQueryHandler<GetItemsQuery> {
