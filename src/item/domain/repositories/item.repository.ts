@@ -1,40 +1,42 @@
 import { Injectable } from '@nestjs/common';
 
-import { CreateItemDto, UpdateItemDto } from '../../application/dtos';
+import { CreateItemDto, UpdateItemDto } from '@application/dtos';
 import { Item } from '../models';
 import { ItemEventType } from '../types';
 
 @Injectable()
 export class ItemRepository {
+  public item: Item;
+
   deleteItem(id: number): Item {
-    const item = new Item(id);
+    this.item = new Item(id);
 
-    item.deleteItem();
+    this.item.deleteItem();
 
-    return item;
+    return this.item;
   }
 
   createItem(createItemDto: CreateItemDto): Item {
-    const item = new Item();
+    this.item = new Item();
 
-    item.createItem(createItemDto);
+    this.item.createItem(createItemDto);
 
-    return item;
+    return this.item;
   }
 
   updateItem(updateItemDto: UpdateItemDto): Item {
-    const item = new Item();
+    this.item = new Item();
 
-    item.updateItem(updateItemDto);
+    this.item.updateItem(updateItemDto);
 
-    return item;
+    return this.item;
   }
 
   notifyItemOwner(event: ItemEventType): Item {
-    const item = new Item();
+    this.item = new Item();
 
-    item.notifyItemOwner(event);
+    this.item.notifyItemOwner(event);
 
-    return item;
+    return this.item;
   }
 }

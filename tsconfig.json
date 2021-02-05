@@ -17,6 +17,7 @@
       "@domain/*": ["src/item/domain/*"],
       "@application/*": ["src/item/application/*"],
       "@database/*": ["src/database/*"],
+      "@test/*": ["test/*"]
     }
   }
 }

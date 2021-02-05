@@ -7,4 +7,10 @@ export class ItemEntity extends BaseEntity {
 
   @Column()
   name: string;
+
+  constructor(id: number, name: string) {
+    super();
+    this.id = id;
+    this.name = name;
+  }
 }
