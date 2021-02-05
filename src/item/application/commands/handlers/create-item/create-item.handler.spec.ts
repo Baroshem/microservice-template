@@ -7,6 +7,7 @@ import { ItemEntity } from '@infrastructure/entities';
 import { ItemWriteRepository } from '@infrastructure/repositories';
 import { ItemRepository } from '@domain/repositories';
 import { CreateItemHandler } from './create-item.handler';
+import { mockedTypeOrmRepository } from '@test/mocks';
 
 const mockedItem = new ItemEntity(1, 'Test');
 
@@ -22,10 +23,7 @@ describe('CreateItemHandler', () => {
         ItemRepository,
         {
           provide: getRepositoryToken(ItemWriteRepository),
-          useValue: {
-            create: jest.fn().mockResolvedValue(mockedItem),
-            save: jest.fn().mockResolvedValue(mockedItem),
-          },
+          useValue: mockedTypeOrmRepository,
         },
       ],
     }).compile();

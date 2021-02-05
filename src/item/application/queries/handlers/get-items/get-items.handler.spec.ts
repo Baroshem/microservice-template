@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { ItemEntity } from '@infrastructure/entities';
 import { ItemReadRepository } from '@infrastructure/repositories';
 import { GetItemsHandler } from './get-items.handler';
+import { mockedTypeOrmRepository } from '@test/mocks';
 
 const mockedItems = [
   new ItemEntity(1, 'Test'),
@@ -24,9 +25,7 @@ describe('GetItemsHandler', () => {
         GetItemsHandler,
         {
           provide: getRepositoryToken(ItemReadRepository),
-          useValue: {
-            find: jest.fn().mockResolvedValue(mockedItems),
-          },
+          useValue: mockedTypeOrmRepository,
         },
       ],
     }).compile();

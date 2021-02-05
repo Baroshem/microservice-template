@@ -7,6 +7,7 @@ import { ItemEntity } from '@infrastructure/entities';
 import { ItemWriteRepository } from '@infrastructure/repositories';
 import { ItemRepository } from '@domain/repositories';
 import { UpdateItemHandler } from './update-item.handler';
+import { mockedTypeOrmRepository } from '@test/mocks';
 
 const mockedItem = new ItemEntity(1, 'Test');
 
@@ -22,10 +23,7 @@ describe('UpdateItemHandler', () => {
         ItemRepository,
         {
           provide: getRepositoryToken(ItemWriteRepository),
-          useValue: {
-            findOne: jest.fn().mockResolvedValue(mockedItem),
-            update: jest.fn().mockResolvedValue(true),
-          },
+          useValue: mockedTypeOrmRepository,
         },
       ],
     }).compile();
@@ -42,7 +40,7 @@ describe('UpdateItemHandler', () => {
 
   it('should call repo to find and delete item', async () => {
     const item = await handler.execute({
-      updateItemDto: { id: 1, name: 'Test1' },
+      updateItemDto: { id: 1, name: 'Test' },
     });
     const repoFindOneSpy = jest.spyOn(repo, 'findOne');
     const repoUpdateSpy = jest.spyOn(repo, 'update');

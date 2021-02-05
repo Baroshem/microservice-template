@@ -7,6 +7,7 @@ import { ItemEntity } from '@infrastructure/entities';
 import { ItemWriteRepository } from '@infrastructure/repositories';
 import { ItemRepository } from '@domain/repositories';
 import { DeleteItemByIdHandler } from './delete-item-by-id.handler';
+import { mockedTypeOrmRepository } from '@test/mocks';
 
 const mockedItem = new ItemEntity(1, 'Test');
 
@@ -22,10 +23,7 @@ describe('DeleteItemByIdHandler', () => {
         ItemRepository,
         {
           provide: getRepositoryToken(ItemWriteRepository),
-          useValue: {
-            findOne: jest.fn().mockResolvedValue(mockedItem),
-            delete: jest.fn().mockResolvedValue(true),
-          },
+          useValue: mockedTypeOrmRepository,
         },
       ],
     }).compile();
