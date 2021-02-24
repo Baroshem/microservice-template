@@ -28,7 +28,7 @@
     "@nestjs/microservices": "^7.6.7",
     "@nestjs/platform-express": "^7.6.9",
     "@nestjs/schedule": "^0.4.2",
-    "@nestjs/terminus": "^7.0.1",
+    "@nestjs/terminus": "^7.1.0",
     "@nestjs/typeorm": "^7.1.5",
     "amqp-connection-manager": "^3.2.1",
     "amqplib": "^0.6.0",
