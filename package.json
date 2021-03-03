@@ -30,7 +30,7 @@
     "@nestjs/schedule": "^0.4.2",
     "@nestjs/terminus": "^7.1.0",
     "@nestjs/typeorm": "^7.1.5",
-    "amqp-connection-manager": "^3.2.1",
+    "amqp-connection-manager": "^3.2.2",
     "amqplib": "^0.6.0",
     "module-alias": "^2.2.2",
     "node-eventstore-client": "^0.2.18",
