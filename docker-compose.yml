@@ -14,6 +14,20 @@ services:
     networks:
       - microservice-network
 
+  postgres_read:
+    container_name: microservice_postgres_read
+    image: postgres:${POSTGRES_VERSION_READ}
+    environment: 
+      - POSTGRES_USER=${POSTGRES_USERNAME_READ}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD_READ}
+      - POSTGRES_DB=${POSTGRES_DATABASE_READ}
+    ports:
+      - ${POSTGRES_PORT_READ}:5432
+    volumes:
+      - /data/postgres/
+    networks:
+      - microservice-network
+
   eventstore:
     container_name: microservice_eventstore
     ports:
