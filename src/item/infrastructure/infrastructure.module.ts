@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { ItemEntity } from './entities';
+import { ItemEntity, ItemReadEntity } from './entities';
 import { ItemReadRepository, ItemWriteRepository } from './repositories';
 
 @Global()
@@ -11,6 +11,7 @@ import { ItemReadRepository, ItemWriteRepository } from './repositories';
       ItemReadRepository,
       ItemWriteRepository,
       ItemEntity,
+      ItemReadEntity,
     ]),
   ],
 })
