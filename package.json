@@ -20,10 +20,10 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@juicycleff/nestjs-event-store": "^3.1.18",
+    "@juicycleff/nestjs-event-store": "^4.0.0",
     "@nestjs/common": "^7.6.9",
     "@nestjs/config": "^0.6.2",
-    "@nestjs/core": "^7.6.9",
+    "@nestjs/core": "^9.0.5",
     "@nestjs/cqrs": "^7.0.1",
     "@nestjs/microservices": "^7.6.7",
     "@nestjs/platform-express": "^7.6.9",
