@@ -534,16 +534,13 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@juicycleff/nestjs-event-store@^3.1.18":
-  version "3.1.19"
-  resolved "https://registry.yarnpkg.com/@juicycleff/nestjs-event-store/-/nestjs-event-store-3.1.18.tgz#4d9eaadf32f2233f859cc632aed6325fe6a09125"
-  integrity sha512-JVIEo8sUlv6PJhe/Jy7hWdCybvM4Gjm0ZiMg3A8Ctw5Ws3LzNkwgG5ddCDV1qnYJYzi+b0vAkjvztE4tvVNUuQ==
+"@juicycleff/nestjs-event-store@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@juicycleff/nestjs-event-store/-/nestjs-event-store-4.0.0.tgz#ce25c51ee148d77114375219b893d4c5484f329e"
+  integrity sha512-7kH1fbhNhAPHmCQPAXRttQw4bMCWX/Jn46lrywP6CFCUCdM0P7p1eTlHRnh8vmzKlHbobpZxwa+amZKQQOwZeQ==
   dependencies:
-    "@nestjs/common" "^7.4.2"
-    "@nestjs/core" "^7.4.2"
-    "@nestjs/cqrs" "^7.0.0"
-    axios "^0.19.2"
-    protobufjs "^6.10.1"
+    node-eventstore-client "^0.2.16"
+    node-nats-streaming "^0.3.2"
     uuid "^8.3.0"
 
 "@nestjs/cli@^7.0.0":
@@ -574,16 +571,6 @@
     webpack "5.9.0"
     webpack-node-externals "2.5.2"
 
-"@nestjs/common@^7.4.2":
-  version "7.6.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.7.tgz#471fba6fa1de49d4d9228a05fc21d1ba8663f250"
-  integrity sha512-aMoqSQQG3UKWyfLl8cYgd/+bgDNUvSobZm4B1Ne+1CvavnS8E3818ksxRjoZ7MPJJOSOSIQJUY0HYXVvbddt0w==
-  dependencies:
-    axios "0.21.1"
-    iterare "1.2.1"
-    tslib "2.1.0"
-    uuid "8.3.2"
-
 "@nestjs/common@^7.6.9":
   version "7.6.13"
   resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.13.tgz#597558afedfddeb5021fe8a154327ee082279ab8"
@@ -606,19 +593,6 @@
     lodash.set "4.3.2"
     uuid "8.3.2"
 
-"@nestjs/core@^7.4.2":
-  version "7.6.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.6.7.tgz#972e94dae31ebc726df3fad4c181ad6b578ebdb5"
-  integrity sha512-1n4r0AqoD3Eg+nnqZyNSFEz1MQRf2GabQbxnJj3T6SLj2VwxKNEO1qIZyDABNXLFcj79AfjPq5gqEhCutCuE2Q==
-  dependencies:
-    "@nuxtjs/opencollective" "0.3.2"
-    fast-safe-stringify "2.0.7"
-    iterare "1.2.1"
-    object-hash "2.1.1"
-    path-to-regexp "3.2.0"
-    tslib "2.1.0"
-    uuid "8.3.2"
-
 "@nestjs/core@^7.6.9":
   version "7.6.13"
   resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.6.13.tgz#b7518dceb436e6ed2c1fad2cff86ddf69b143e73"
@@ -632,7 +606,7 @@
     tslib "2.1.0"
     uuid "8.3.2"
 
-"@nestjs/cqrs@^7.0.0", "@nestjs/cqrs@^7.0.1":
+"@nestjs/cqrs@^7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@nestjs/cqrs/-/cqrs-7.0.1.tgz#35b1137ad8fa54329c8ee4cea035ff55d9c2a98a"
   integrity sha512-4UJAH3ryJvT+SDeuB5ls1OpJsPr3xqsyiuWCfVd1oyzCLazuxl04t/xup005HtWdxczwLgaAau7SIAb+XZotBQ==
@@ -1587,13 +1561,6 @@ axios@0.21.1:
   dependencies:
     follow-redirects "^1.10.0"
 
-axios@^0.19.2:
-  version "0.19.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
-  integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
-  dependencies:
-    follow-redirects "1.5.10"
-
 babel-jest@^26.6.3:
   version "26.6.3"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-26.6.3.tgz#d87d25cb0037577a0c89f82e5755c5d293c01056"
@@ -2287,13 +2254,6 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.9, debug@~2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
-  dependencies:
-    ms "2.0.0"
-
-debug@=3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
-  integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
   dependencies:
     ms "2.0.0"
 
@@ -3026,13 +2986,6 @@ flatted@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.1.1.tgz#c4b489e80096d9df1dfc97c79871aea7c617c469"
   integrity sha512-zAoAQiudy+r5SvnSw3KJy5os/oRJYHzrzja/tBDqrZtNhUw8bt6y8OBzMWcjWr+8liV8Eb6yOhw8WZ7VFZ5ZzA==
-
-follow-redirects@1.5.10:
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
-  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
-  dependencies:
-    debug "=3.1.0"
 
 follow-redirects@^1.10.0:
   version "1.13.2"
@@ -4710,6 +4663,18 @@ node-emoji@1.10.0:
   dependencies:
     lodash.toarray "^4.4.0"
 
+node-eventstore-client@^0.2.16:
+  version "0.2.19"
+  resolved "https://registry.yarnpkg.com/node-eventstore-client/-/node-eventstore-client-0.2.19.tgz#cb5c68c9bbf61d83d1adb223c36d81d3f8489e68"
+  integrity sha512-mmnRtDcO13b07zYWDHzXg2MJY0nTOfGFMNWiBBcd+uGehowmL+tP19WfPTjfFBnagbb1zZQX3DPIVenOBQIHiQ==
+  dependencies:
+    "@types/long" "^3.0.32"
+    "@types/node" ">=5.10"
+    long "^3.2.0"
+    protobufjs "^6.8.8"
+    strict-event-emitter-types "^1.2.0"
+    uuid "^3.0.1"
+
 node-eventstore-client@^0.2.18:
   version "0.2.18"
   resolved "https://registry.yarnpkg.com/node-eventstore-client/-/node-eventstore-client-0.2.18.tgz#811eb76b627dca3adb21461c47f8f4b74c81afeb"
@@ -5303,7 +5268,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-protobufjs@^6.10.1, protobufjs@^6.8.8:
+protobufjs@^6.8.8:
   version "6.10.2"
   resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-6.10.2.tgz#b9cb6bd8ec8f87514592ba3fdfd28e93f33a469b"
   integrity sha512-27yj+04uF6ya9l+qfpH187aqEzfCF4+Uit0I9ZBQVqK09hk/SQzKa2MUqUpXaVa7LOFRg1TSSr3lVxGOk6c0SQ==
