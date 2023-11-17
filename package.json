@@ -25,7 +25,7 @@
     "@nestjs/config": "^0.6.2",
     "@nestjs/core": "^7.6.9",
     "@nestjs/cqrs": "^7.0.1",
-    "@nestjs/microservices": "^7.6.7",
+    "@nestjs/microservices": "^7.6.18",
     "@nestjs/platform-express": "^7.6.9",
     "@nestjs/schedule": "^0.4.2",
     "@nestjs/terminus": "^7.1.0",
