@@ -35,7 +35,7 @@
     "module-alias": "^2.2.2",
     "node-eventstore-client": "^0.2.18",
     "node-nats-streaming": "^0.3.2",
-    "pg": "^8.5.1",
+    "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
